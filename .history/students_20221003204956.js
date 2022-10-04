@@ -1,7 +1,5 @@
 const { POol, Pool } = require('pg');
 
-const myArgs = process.argv.slice(2);
-
 const pool = new Pool({
   user: 'vagrant',
   password: '123',
@@ -11,11 +9,10 @@ const pool = new Pool({
 
 
 pool.query(`
-SELECT students.id AS id, students.name AS name, cohorts.name AS cohort
+SELECT id, name, cohorts.name as name
 FROM students
-JOIN cohorts ON students.cohort_id = cohorts.id
-WHERE cohorts.name = '${myArgs[0] + "12"}'
-LIMIT ${myArgs[1]};
+JOIN cohorts on 
+LIMIT 5;
 `)
   .then(res => {
     console.log(res.rows);

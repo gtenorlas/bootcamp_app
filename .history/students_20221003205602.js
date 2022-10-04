@@ -11,11 +11,11 @@ const pool = new Pool({
 
 
 pool.query(`
-SELECT students.id AS id, students.name AS name, cohorts.name AS cohort
+SELECT students.id AS id, students.name AS name, cohorts.name AS cohort_name
 FROM students
 JOIN cohorts ON students.cohort_id = cohorts.id
-WHERE cohorts.name = '${myArgs[0] + "12"}'
-LIMIT ${myArgs[1]};
+
+LIMIT 5;
 `)
   .then(res => {
     console.log(res.rows);

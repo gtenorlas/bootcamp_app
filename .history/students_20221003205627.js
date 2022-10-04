@@ -14,8 +14,8 @@ pool.query(`
 SELECT students.id AS id, students.name AS name, cohorts.name AS cohort
 FROM students
 JOIN cohorts ON students.cohort_id = cohorts.id
-WHERE cohorts.name = '${myArgs[0] + "12"}'
-LIMIT ${myArgs[1]};
+WHERE cohort
+LIMIT 5;
 `)
   .then(res => {
     console.log(res.rows);
